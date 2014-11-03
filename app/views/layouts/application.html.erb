@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resistance</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://code.highcharts.com/highcharts.js", "chartkick" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<ul>
+  <li><%= link_to 'Games', games_path %></li>
+  <li><%= link_to 'Players', players_path %></li>
+  <li><%= link_to 'Teams', teams_path %></li>
+  <li><%= link_to 'Roles', roles_path %></li>
+</ul>
+<%= yield %>
+
+</body>
+</html>

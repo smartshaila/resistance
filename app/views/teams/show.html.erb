@@ -1,0 +1,11 @@
+<!-- Show Roles -->
+
+<p>
+  <%= @team.name %>
+</p>
+
+<ul>
+  <% @team.roles.each do |role| %>
+    <li><%= role.name %></li>
+  <% end %>
+</ul>

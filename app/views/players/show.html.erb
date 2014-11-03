@@ -1,0 +1,29 @@
+<!--<%= line_chart Game.group(:date, :created_at).count %>-->
+
+Player Details: <%= @player.name %>
+
+<table>
+  <tr>
+    <th colspan="1"></th>
+    <th># of Wins</th>
+    <th># of Losses</th>
+  </tr>
+  <tr>
+    <td>Total</td>
+      <td><%= @player.assignments.map {|a| a.team == a.game.team}.count(true) %></td>
+      <td><%= @player.assignments.map {|a| a.team == a.game.team}.count(false) %></td>
+  </tr>
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result[:team] %></td>
+      <td><%= result[:wins] %></td>
+      <td><%= result[:losses] %></td>
+    </tr>
+   <% end %>
+</table>
+
+<%= bar_chart @chart_data_team, stacked: true %>
+
+<%= column_chart @chart_data_role %>
+
+<!-- No of wins = No of games where player.role.team = game.team -->

@@ -1,0 +1,13 @@
+<%= form_for(@role) do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :team %>
+    <%= f.collection_select(:team_id, Team.all, :id, :name, prompt: true) %>
+  </p>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>

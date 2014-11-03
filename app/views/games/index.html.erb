@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<p>Total Games Played: <%= @games.size %></p>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Winning Team</th>
+    <th>No. of Players</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @games.each do |game| %>
+    <tr>
+      <td><%= game.date %></td>
+      <td><%= game.team.name %></td>
+      <td><%= game.players.size %></td>
+      <td><%= link_to 'Show Details', game %></td>
+      <td><%= link_to 'Edit', edit_game_path(game) %></td>
+      <td><%= link_to 'Delete', game, method: :delete, data: {confirm: 'Delete?'} %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= pie_chart @chart_data %>
+
+<%= link_to 'Add', new_game_path %>

@@ -1,0 +1,22 @@
+<%= nested_form_for(@game) do |f| %>
+  <p>
+    <%= f.label :date %>
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.label :winning_team %>
+    <%= f.collection_select(:team_id, Team.all, :id, :name, prompt: true) %>
+  </p>
+  <p>
+    <%= f.fields_for :assignments do |assign| %>
+      <%= assign.collection_select(:player_id, Player.all, :id, :name, prompt: 'Select Player') %>
+      <%= assign.collection_select(:role_id, Role.all, :id, :name, prompt: 'Select Role') %>
+      <br />
+    <% end %>
+    <%= f.link_to_add "Add Player/Role", :assignments %>
+  </p>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+
+<% end %>

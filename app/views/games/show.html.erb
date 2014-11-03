@@ -1,0 +1,22 @@
+<p>
+  Game Details for <%= @game.date %>
+</p>
+
+<p>
+  Winning Team: <%= @game.team.name %>
+</p>
+
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Role</th>
+  </tr>
+    <% @game.assignments.each do |assignment| %>
+      <tr class="<%= assignment.role.team.name.downcase %>">
+        <td><%= assignment.player.name %></td>
+        <td><%= assignment.role.name %></td>
+      </tr>
+    <% end %>
+</table>
+
+<%= link_to 'Back', :back %>
