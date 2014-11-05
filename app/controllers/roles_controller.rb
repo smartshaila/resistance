@@ -36,7 +36,6 @@ class RolesController < ApplicationController
           }.sort
       }
     }.sort_by{|r| r[:name]}
-
   end
 
   def edit

@@ -20,5 +20,7 @@
 </table>
 
 <%= pie_chart @games_by_team %>
+<%= column_chart @game_wins_by_size%>
+<%= line_chart @games_by_date%>
 
 <%= link_to 'Add', new_game_path %>

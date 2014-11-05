@@ -8,8 +8,27 @@ class GamesController < ApplicationController
     @games_by_team = @games.group_by{|g|
       g.team.name
     }.map{|r,a|
-        [r,a.count]
+        [r, a.count]
       }
+
+    @games_by_date = @games.group_by{|g|
+      g.date
+    }.map{|d,g|
+        [d, g.count]
+      }
+
+    @game_wins_by_size = @games.all.group_by{|g|
+      g.team.name
+    }.map{|r,g|
+      {
+          name: r,
+          data: g.group_by{|g|
+            g.players.size
+          }.map{|size, games|
+            [size, games.count]
+          }.sort
+      }
+    }
   end
 
   def new
