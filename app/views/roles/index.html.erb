@@ -9,12 +9,13 @@
     <tr>
       <td><%= role.name %></td>
       <td><%= role.team.name %></td>
+      <td><%= link_to 'Show Graphs', role %></td>
       <td><%= link_to 'Edit', edit_role_path(role) %></td>
       <td><%= link_to 'Delete', role, method: :delete, data: {confirm: 'Delete?'} %></td>
     </tr>
   <% end %>
 </table>
 
-<%= column_chart @chart_data %>
+<%= column_chart @total_wins_by_role %>
 
 <%= link_to 'Add', new_role_path %>

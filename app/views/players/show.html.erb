@@ -22,6 +22,8 @@ Player Details: <%= @player.name %>
    <% end %>
 </table>
 
-<%= bar_chart @chart_data_team, stacked: true %>
+<%= bar_chart @player_wins_by_team, stacked: true %>
 
-<%= column_chart @chart_data_role %>
+<%= column_chart @player_wins_by_role %>
+
+<%= pie_chart @player_roles %>

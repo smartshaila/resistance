@@ -17,7 +17,7 @@ class PlayersController < ApplicationController
       {:team => team.name, :wins => results_by_team.count(true), :losses => results_by_team.count(false)}
     }
 
-    @chart_data_team = @player.assignments.group_by{|a|
+    @player_wins_by_team = @player.assignments.group_by{|a|
       a.winning?
     }.map{|r,a|
       {
@@ -30,7 +30,7 @@ class PlayersController < ApplicationController
       }
     }.sort_by{|r| r[:name]}
 
-    @chart_data_role = @player.assignments.group_by{|a|
+    @player_wins_by_role = @player.assignments.group_by{|a|
       a.winning?
     }.map{|r,a|
       {
@@ -42,6 +42,12 @@ class PlayersController < ApplicationController
           }.sort
       }
     }.sort_by{|r| r[:name]}
+
+    @player_roles = @player.assignments.group_by{|a|
+      a.role.name
+    }.map{|r,a|
+      [r,a.count]
+    }
 
   end
 

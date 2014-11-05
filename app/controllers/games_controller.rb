@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   def index
     @games = Game.all
 
-    @chart_data = @games.group_by{|g|
+    @games_by_team = @games.group_by{|g|
       g.team.name
     }.map{|r,a|
         [r,a.count]

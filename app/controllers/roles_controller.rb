@@ -5,7 +5,7 @@ class RolesController < ApplicationController
   def index
     @roles = Role.all
 
-    @chart_data = Assignment.all.group_by{|a|
+    @total_wins_by_role = Assignment.all.group_by{|a|
       a.winning?
     }.map{|r,a|
       {
@@ -24,6 +24,19 @@ class RolesController < ApplicationController
   end
 
   def show
+    @role_wins_by_player = @role.assignments.group_by{|a|
+      a.winning?
+    }.map{|r,a|
+      {
+          name: r ? 'Wins' : 'Losses',
+          data: a.group_by{|a|
+            a.player.name
+          }.map{|player,assignments|
+            [player, assignments.count]
+          }.sort
+      }
+    }.sort_by{|r| r[:name]}
+
   end
 
   def edit
