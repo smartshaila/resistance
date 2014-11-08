@@ -1,6 +1,7 @@
 <!--<%= line_chart Game.group(:date, :created_at).count %>-->
 
-Player Details: <%= @player.name %>
+<p>Player Details: <%= @player.name %></p>
+<p>Win Percent: <%= number_to_percentage(@player.win_percent*100, precision: 2) %></p>
 
 <table>
   <tr>

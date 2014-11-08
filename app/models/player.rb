@@ -6,5 +6,9 @@ class Player < ActiveRecord::Base
 
   accepts_nested_attributes_for :assignments, allow_destroy: true
 
+  def win_percent
+    self.assignments.map{|a| a.winning?}.count(true).to_f / self.assignments.count.to_f
+  end
+
   default_scope { order('name ASC') }
 end

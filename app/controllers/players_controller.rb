@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:edit, :update, :destroy, :show]
 
   def index
-    @players = Player.all
+    @players = Player.all.sort_by(&:win_percent).reverse
   end
 
   def new
@@ -48,7 +48,6 @@ class PlayersController < ApplicationController
     }.map{|r,a|
       [r,a.count]
     }
-
   end
 
   def edit
