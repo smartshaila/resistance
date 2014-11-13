@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-	has_many :assignments
+	has_many :assignments, dependent: :destroy
 	has_many :roles, through: :assignments
 	has_many :games, through: :assignments
   has_many :teams, through: :roles
